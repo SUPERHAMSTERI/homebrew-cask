@@ -29,6 +29,12 @@ cask "logitech-g-hub" do
     sudo:       true,
   }
 
+  postflight do
+    set_ownership "#{appdir}/lghub.app"
+    set_ownership "/Users/Shared/LGHUB"
+    set_permissions "#{appdir}/lghub.app", "0755"
+  end
+
   uninstall launchctl: [
               "com.logi.ghub",
               "com.logi.ghub.agent",
